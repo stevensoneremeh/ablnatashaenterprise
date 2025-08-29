@@ -15,7 +15,7 @@ export default function RootLayout({
         <title>ABL NATASHA ENTERPRISES | Premium Real Estate, Cars, Perfumes & More</title>
         <meta name="description" content="Your trusted partner for luxury real estate, automobiles, perfumes, human hair, wines and premium bags in Nigeria" />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <ClientProviders>
           <Header />
           {children}

@@ -21,25 +21,23 @@ export default function ClientProviders({
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+  if (loading) {
+    return <PreLoader />;
+  }
+
   return (
-    <>
-      {loading ? (
-        <PreLoader />
-      ) : (
-        <ReduxProvider>
-          <CartModalProvider>
-            <ModalProvider>
-              <PreviewSliderProvider>
-                {children}
-                <QuickViewModal />
-                <CartSidebarModal />
-                <PreviewSliderModal />
-              </PreviewSliderProvider>
-            </ModalProvider>
-          </CartModalProvider>
-          <ScrollToTop />
-        </ReduxProvider>
-      )}
-    </>
+    <ReduxProvider>
+      <CartModalProvider>
+        <ModalProvider>
+          <PreviewSliderProvider>
+            {children}
+            <QuickViewModal />
+            <CartSidebarModal />
+            <PreviewSliderModal />
+          </PreviewSliderProvider>
+        </ModalProvider>
+      </CartModalProvider>
+      <ScrollToTop />
+    </ReduxProvider>
   );
 }

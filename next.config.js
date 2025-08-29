@@ -13,6 +13,12 @@ const nextConfig = {
   experimental: {
     esmExternals: false,
   },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 };
 
 module.exports = nextConfig;
