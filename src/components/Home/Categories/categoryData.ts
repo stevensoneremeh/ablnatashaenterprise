@@ -5,7 +5,7 @@ const data = [
     img: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Short Stay Apartments",
+    title: "Short Stay",
     id: 2,
     img: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
