@@ -11,8 +11,12 @@ const Footer = () => {
         <div className="flex flex-wrap xl:flex-nowrap gap-10 xl:gap-19 xl:justify-between pt-17.5 xl:pt-22.5 pb-10 xl:pb-15">
           <div className="max-w-[330px] w-full">
             <h2 className="mb-7.5 text-custom-1 font-medium text-dark">
-              Help & Support
+              ABL NATASHA ENTERPRISES
             </h2>
+
+            <p className="mb-4 text-sm">
+              Your trusted partner for luxury real estate, automobiles, perfumes, human hair, wines and premium bags.
+            </p>
 
             <ul className="flex flex-col gap-3">
               <li className="flex gap-4.5">
@@ -32,7 +36,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                685 Market Street,Las Vegas, LA 95820,United States.
+                Plot 123, Victoria Island, Lagos, Nigeria.
               </li>
 
               <li>
@@ -81,7 +85,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  support@example.com
+                  info@ablnatasha.com
                 </a>
               </li>
             </ul>

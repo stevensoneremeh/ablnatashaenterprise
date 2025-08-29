@@ -2,8 +2,8 @@ import Home from "@/components/Home";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NextCommerce | Nextjs E-commerce template",
-  description: "This is Home for NextCommerce Template",
+  title: "ABL NATASHA ENTERPRISES | Premium Real Estate, Cars, Perfumes & More",
+  description: "Your trusted partner for luxury real estate, automobiles, perfumes, human hair, wines and premium bags in Nigeria",
   // other metadata
 };
 

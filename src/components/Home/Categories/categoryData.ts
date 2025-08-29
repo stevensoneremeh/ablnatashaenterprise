@@ -1,44 +1,39 @@
 const data = [
   {
-    title: "Televisions",
+    title: "Real Estate",
     id: 1,
-    img: "/images/categories/categories-01.png",
+    img: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Laptop & PC",
+    title: "Short Stay Apartments",
     id: 2,
-    img: "/images/categories/categories-02.png",
+    img: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Mobile & Tablets",
+    title: "Automobiles",
     id: 3,
-    img: "/images/categories/categories-03.png",
+    img: "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Games & Videos",
+    title: "Perfumes",
     id: 4,
-    img: "/images/categories/categories-04.png",
+    img: "https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Home Appliances",
+    title: "Human Hair",
     id: 5,
-    img: "/images/categories/categories-05.png",
+    img: "https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Health & Sports",
+    title: "Drinks & Wines",
     id: 6,
-    img: "/images/categories/categories-06.png",
+    img: "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    title: "Watches",
+    title: "Bags",
     id: 7,
-    img: "/images/categories/categories-07.png",
-  },
-  {
-    title: "Televisions",
-    id: 8,
-    img: "/images/categories/categories-04.png",
-  },
+    img: "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400",
+  }
 ];
 
 export default data;
