@@ -1,5 +1,13 @@
 "use client";
 import React from "react";
+import { useAppSelector } from "@/redux/store";
+import { selectTotalPrice } from "@/redux/features/cart-slice";
+import { useSelector } from "react-redux";
+import PaystackButton from "@/components/Payment/PaystackButton";
+import { useAuth } from "@/components/Auth/AuthProvider";
+import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import Breadcrumb from "../Common/Breadcrumb";
 import Login from "./Login";
 import Shipping from "./Shipping";
@@ -9,6 +17,41 @@ import Coupon from "./Coupon";
 import Billing from "./Billing";
 
 const Checkout = () => {
+  const cartItems = useAppSelector((state) => state.cartReducer.items);
+  const totalPrice = useSelector(selectTotalPrice);
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handlePaymentSuccess = async (reference: string) => {
+    try {
+      const supabase = createClient();
+      
+      // Create order in database
+      const { data, error } = await supabase
+        .from('orders')
+        .insert({
+          user_id: user?.id,
+          total_amount: totalPrice,
+          payment_reference: reference,
+          payment_status: 'paid',
+          status: 'confirmed',
+          items: cartItems,
+          shipping_address: {},
+          billing_address: {}
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      toast.success("Payment successful! Order confirmed.");
+      router.push(`/order-success?ref=${reference}`);
+    } catch (error) {
+      console.error('Error creating order:', error);
+      toast.error("Payment successful but order creation failed. Please contact support.");
+    }
+  };
+
   return (
     <>
       <Breadcrumb title={"Checkout"} pages={["checkout"]} />
@@ -115,7 +158,7 @@ const Checkout = () => {
                       </div>
                       <div>
                         <p className="font-medium text-lg text-dark text-right">
-                          $1072.00
+                          ₦{totalPrice.toLocaleString()}
                         </p>
                       </div>
                     </div>
@@ -132,12 +175,17 @@ const Checkout = () => {
                 <PaymentMethod />
 
                 {/* <!-- checkout button --> */}
-                <button
-                  type="submit"
+                <PaystackButton
+                  amount={totalPrice}
+                  onSuccess={handlePaymentSuccess}
                   className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
+                  metadata={{
+                    order_items: cartItems.length,
+                    customer_id: user?.id
+                  }}
                 >
-                  Process to Checkout
-                </button>
+                  Pay ₦{totalPrice.toLocaleString()} with Paystack
+                </PaystackButton>
               </div>
             </div>
           </form>

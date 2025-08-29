@@ -3,6 +3,7 @@ import "../css/style.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ClientProviders from "./ClientProviders";
+import { AuthProvider } from "@/components/Auth/AuthProvider";
 
 export default function RootLayout({
   children,
@@ -16,11 +17,13 @@ export default function RootLayout({
         <meta name="description" content="Your trusted partner for luxury real estate, automobiles, perfumes, human hair, wines and premium bags in Nigeria" />
       </head>
       <body suppressHydrationWarning={true}>
-        <ClientProviders>
-          <Header />
-          {children}
-          <Footer />
-        </ClientProviders>
+        <AuthProvider>
+          <ClientProviders>
+            <Header />
+            {children}
+            <Footer />
+          </ClientProviders>
+        </AuthProvider>
       </body>
     </html>
   );
