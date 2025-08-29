@@ -5,8 +5,8 @@ export const ablProducts: Product[] = [
   {
     title: "Luxury 4BR Villa - Lekki Phase 1",
     reviews: 12,
-    price: 85000000,
-    discountedPrice: 80000000,
+    price: 850000000,
+    discountedPrice: 800000000,
     id: 1,
     category: "real-estate",
     imgs: {
@@ -23,8 +23,8 @@ export const ablProducts: Product[] = [
   {
     title: "Modern 3BR Apartment - Victoria Island",
     reviews: 8,
-    price: 45000000,
-    discountedPrice: 42000000,
+    price: 450000000,
+    discountedPrice: 420000000,
     id: 2,
     category: "real-estate",
     imgs: {
@@ -42,8 +42,8 @@ export const ablProducts: Product[] = [
   {
     title: "Executive Studio - Short Stay",
     reviews: 15,
-    price: 25000,
-    discountedPrice: 20000,
+    price: 250000,
+    discountedPrice: 200000,
     id: 3,
     category: "short-stay-apartments",
     imgs: {
@@ -60,8 +60,8 @@ export const ablProducts: Product[] = [
   {
     title: "Luxury 2BR Serviced Apartment",
     reviews: 20,
-    price: 45000,
-    discountedPrice: 40000,
+    price: 450000,
+    discountedPrice: 400000,
     id: 4,
     category: "short-stay-apartments",
     imgs: {
@@ -79,8 +79,8 @@ export const ablProducts: Product[] = [
   {
     title: "Toyota Camry 2022 - Excellent Condition",
     reviews: 6,
-    price: 18500000,
-    discountedPrice: 17500000,
+    price: 185000000,
+    discountedPrice: 175000000,
     id: 5,
     category: "automobiles",
     imgs: {
@@ -97,8 +97,8 @@ export const ablProducts: Product[] = [
   {
     title: "Mercedes-Benz C-Class 2021",
     reviews: 4,
-    price: 35000000,
-    discountedPrice: 32000000,
+    price: 350000000,
+    discountedPrice: 320000000,
     id: 6,
     category: "automobiles",
     imgs: {
@@ -116,8 +116,8 @@ export const ablProducts: Product[] = [
   {
     title: "Chanel No. 5 - Classic Fragrance",
     reviews: 25,
-    price: 85000,
-    discountedPrice: 75000,
+    price: 850000,
+    discountedPrice: 750000,
     id: 7,
     category: "perfumes",
     imgs: {
@@ -134,8 +134,8 @@ export const ablProducts: Product[] = [
   {
     title: "Tom Ford Black Orchid - Luxury Scent",
     reviews: 18,
-    price: 120000,
-    discountedPrice: 110000,
+    price: 1200000,
+    discountedPrice: 1100000,
     id: 8,
     category: "perfumes",
     imgs: {
@@ -153,8 +153,8 @@ export const ablProducts: Product[] = [
   {
     title: "Brazilian Virgin Hair Bundle - 22 inches",
     reviews: 30,
-    price: 45000,
-    discountedPrice: 38000,
+    price: 450000,
+    discountedPrice: 380000,
     id: 9,
     category: "human-hair",
     imgs: {
@@ -171,8 +171,8 @@ export const ablProducts: Product[] = [
   {
     title: "Premium Lace Front Wig - Natural Black",
     reviews: 22,
-    price: 65000,
-    discountedPrice: 55000,
+    price: 650000,
+    discountedPrice: 550000,
     id: 10,
     category: "human-hair",
     imgs: {
@@ -190,8 +190,8 @@ export const ablProducts: Product[] = [
   {
     title: "Dom Pérignon Vintage 2012",
     reviews: 14,
-    price: 180000,
-    discountedPrice: 165000,
+    price: 1800000,
+    discountedPrice: 1650000,
     id: 11,
     category: "drinks-wines",
     imgs: {
@@ -208,8 +208,8 @@ export const ablProducts: Product[] = [
   {
     title: "Hennessy XO Cognac - Premium",
     reviews: 19,
-    price: 95000,
-    discountedPrice: 85000,
+    price: 950000,
+    discountedPrice: 850000,
     id: 12,
     category: "drinks-wines",
     imgs: {
@@ -227,8 +227,8 @@ export const ablProducts: Product[] = [
   {
     title: "Louis Vuitton Neverfull MM",
     reviews: 16,
-    price: 450000,
-    discountedPrice: 420000,
+    price: 4500000,
+    discountedPrice: 4200000,
     id: 13,
     category: "bags",
     imgs: {
@@ -245,8 +245,8 @@ export const ablProducts: Product[] = [
   {
     title: "Hermès Birkin 35 - Authentic",
     reviews: 9,
-    price: 2500000,
-    discountedPrice: 2300000,
+    price: 25000000,
+    discountedPrice: 23000000,
     id: 14,
     category: "bags",
     imgs: {
