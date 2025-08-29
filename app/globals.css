@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Updated to futuristic color palette with gold accents */
+    --background: 8 8 12; /* Deep Space Black #08080C */
+    --foreground: 250 250 250; /* Pure White #FAFAFA */
+    --card: 15 15 20; /* Dark Card #0F0F14 */
+    --card-foreground: 245 245 245; /* Light Gray #F5F5F5 */
+    --popover: 15 15 20; /* Dark Popover #0F0F14 */
+    --popover-foreground: 250 250 250; /* Pure White #FAFAFA */
+    --primary: 255 215 0; /* Bright Gold #FFD700 */
+    --primary-foreground: 8 8 12; /* Deep Space Black #08080C */
+    --secondary: 30 30 40; /* Dark Secondary #1E1E28 */
+    --secondary-foreground: 245 245 245; /* Light Gray #F5F5F5 */
+    --muted: 25 25 35; /* Muted Dark #191923 */
+    --muted-foreground: 160 160 170; /* Muted Text #A0A0AA */
+    --accent: 0 255 255; /* Cyan Accent #00FFFF */
+    --accent-foreground: 8 8 12; /* Deep Space Black #08080C */
+    --destructive: 255 69 58; /* Neon Red #FF453A */
+    --destructive-foreground: 255 255 255; /* White #FFFFFF */
+    --border: 45 45 55; /* Subtle Border #2D2D37 */
+    --input: 20 20 28; /* Input Background #14141C */
+    --ring: 255 215 0; /* Gold Ring #FFD700 */
+    --chart-1: 255 215 0; /* Gold #FFD700 */
+    --chart-2: 0 255 255; /* Cyan #00FFFF */
+    --chart-3: 138 43 226; /* Purple #8A2BE2 */
+    --chart-4: 50 205 50; /* Lime Green #32CD32 */
+    --chart-5: 255 20 147; /* Deep Pink #FF1493 */
+    --radius: 0.75rem;
+    --sidebar-background: 12 12 18; /* Sidebar Dark #0C0C12 */
+    --sidebar-foreground: 245 245 245; /* Light Gray #F5F5F5 */
+    --sidebar-primary: 255 215 0; /* Gold #FFD700 */
+    --sidebar-primary-foreground: 8 8 12; /* Deep Space Black #08080C */
+    --sidebar-accent: 25 25 35; /* Accent Dark #191923 */
+    --sidebar-accent-foreground: 160 160 170; /* Muted Text #A0A0AA */
+    --sidebar-border: 35 35 45; /* Sidebar Border #23232D */
+    --sidebar-ring: 255 215 0; /* Gold Ring #FFD700 */
+  }
+
+  .light {
+    /* Light mode with futuristic clean aesthetic */
+    --background: 255 255 255; /* Pure White #FFFFFF */
+    --foreground: 15 15 20; /* Dark Text #0F0F14 */
+    --card: 250 250 252; /* Light Card #FAFAFC */
+    --card-foreground: 25 25 35; /* Dark Card Text #191923 */
+    --popover: 255 255 255; /* White Popover #FFFFFF */
+    --popover-foreground: 15 15 20; /* Dark Text #0F0F14 */
+    --primary: 255 215 0; /* Bright Gold #FFD700 */
+    --primary-foreground: 15 15 20; /* Dark Text #0F0F14 */
+    --secondary: 245 245 248; /* Light Secondary #F5F5F8 */
+    --secondary-foreground: 25 25 35; /* Dark Text #191923 */
+    --muted: 240 240 245; /* Light Muted #F0F0F5 */
+    --muted-foreground: 100 100 120; /* Muted Text #646478 */
+    --accent: 0 200 255; /* Bright Blue #00C8FF */
+    --accent-foreground: 15 15 20; /* Dark Text #0F0F14 */
+    --destructive: 255 69 58; /* Neon Red #FF453A */
+    --destructive-foreground: 255 255 255; /* White #FFFFFF */
+    --border: 230 230 235; /* Light Border #E6E6EB */
+    --input: 250 250 252; /* Input Background #FAFAFC */
+    --ring: 255 215 0; /* Gold Ring #FFD700 */
+  }
+
+  * {
+    /* Fixed border-border error by using proper border color variable */
+    border-color: hsl(var(--border));
+    opacity: 0.2;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Added futuristic background pattern */
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.05) 0%, transparent 50%);
+  }
+
+  /* Enhanced typography with futuristic styling */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-foreground tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-4xl;
+  }
+
+  /* Futuristic component styles */
+  .futuristic-button {
+    @apply relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 
+           transition-all duration-300 px-8 py-4 rounded-xl font-semibold tracking-wide
+           shadow-lg hover:shadow-xl hover:shadow-primary/25 transform hover:-translate-y-0.5;
+  }
+
+  .futuristic-button::before {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
+           -translate-x-full transition-transform duration-700;
+  }
+
+  .futuristic-button:hover::before {
+    @apply translate-x-full;
+  }
+
+  .futuristic-card {
+    @apply bg-card/80 backdrop-blur-xl text-card-foreground border border-border/50 
+           rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300
+           hover:border-primary/30 hover:bg-card/90;
+  }
+
+  .futuristic-input {
+    @apply bg-input/50 backdrop-blur-sm border border-border/50 rounded-xl px-4 py-3 
+           text-foreground placeholder:text-muted-foreground focus:outline-none 
+           focus:ring-2 focus:ring-primary/50 focus:border-primary/50 
+           transition-all duration-300 hover:bg-input/70;
+  }
+
+  .glass-morphism {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+
+  .neon-glow {
+    @apply shadow-lg shadow-primary/25;
+  }
+
+  .neon-text {
+    @apply text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)];
+  }
+
+  /* Animated gradient backgrounds */
+  .gradient-animation {
+    background: linear-gradient(
+      -45deg,
+      hsl(var(--primary)),
+      hsl(var(--accent)),
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Futuristic scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary/70;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  /* Enhanced navigation styles */
+  .nav-link {
+    @apply relative text-foreground/80 hover:text-primary transition-colors duration-300
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 
+           after:bg-primary after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+
+  /* Card hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  /* Loading animations */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+}

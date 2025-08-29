@@ -1,29 +1,29 @@
-'use client'
+"use client"
 
-import { useAuth } from '@/components/Auth/AuthProvider'
-import { useState } from 'react'
+import { useAuth } from "@/components/Auth/AuthProvider"
+import { useState } from "react"
 
 const AdminHeader = () => {
   const { user, profile, signOut } = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+    <header className="bg-card shadow-sm border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600">Manage your luxury marketplace</p>
+          <h1 className="text-2xl font-bold text-foreground">Admin Dashboard</h1>
+          <p className="text-muted-foreground">Manage your luxury marketplace</p>
         </div>
 
         <div className="flex items-center space-x-4">
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center space-x-3 text-gray-700 hover:text-gray-900 focus:outline-none"
+              className="flex items-center space-x-3 text-muted-foreground hover:text-foreground focus:outline-none transition-colors duration-200"
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-medium text-sm">
-                  {profile?.full_name?.charAt(0) || user?.email?.charAt(0) || 'A'}
+              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-primary-foreground font-medium text-sm">
+                  {profile?.full_name?.charAt(0) || user?.email?.charAt(0) || "A"}
                 </span>
               </div>
               <span className="font-medium">{profile?.full_name || user?.email}</span>
@@ -33,13 +33,13 @@ const AdminHeader = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <div className="absolute right-0 mt-2 w-48 bg-card rounded-md shadow-lg border border-border py-1 z-50">
                 <button
                   onClick={() => {
                     signOut()
                     setDropdownOpen(false)
                   }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block w-full text-left px-4 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
                 >
                   Sign Out
                 </button>
