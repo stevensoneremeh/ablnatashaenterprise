@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getSupabaseClient } from "@/lib/supabase/server"
+import { createClient } from "@/lib/supabase/server"
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     const { data } = paystackData
 
     // Update order status in database
-    const supabase = await getSupabaseClient()
+    const supabase = await createClient()
 
     const { error } = await supabase
       .from("orders")

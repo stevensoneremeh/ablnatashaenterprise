@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/client"
-import { getSupabaseClient } from "@/lib/supabase/server"
+import { createClient as createServerClient } from "@/lib/supabase/server"
 
 export async function signUp(email: string, password: string, fullName: string) {
   const supabase = createClient()
@@ -50,7 +50,7 @@ export async function signOut() {
 }
 
 export async function getCurrentUser() {
-  const supabase = await getSupabaseClient()
+  const supabase = await createServerClient()
 
   const {
     data: { user },
