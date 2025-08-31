@@ -70,15 +70,18 @@
   }
 
   * {
-    /* Fixed border-border error by using proper border color variable */
+    /* Fixed border-border error and removed opacity that made everything invisible */
     border-color: hsl(var(--border));
-    opacity: 0.2;
   }
 
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    @apply font-sans antialiased;
+    /* Removed @apply font-sans that was causing CSS syntax error */
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     /* Added futuristic background pattern */
     background-image: radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.05) 0%, transparent 50%);
@@ -91,62 +94,123 @@
   h4,
   h5,
   h6 {
-    @apply font-bold tracking-tight;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: hsl(var(--foreground));
   }
 
   h1 {
-    @apply text-4xl lg:text-6xl;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.75rem;
+      line-height: 1;
+    }
   }
 
   h2 {
-    @apply text-3xl lg:text-5xl;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 3rem;
+      line-height: 1;
+    }
   }
 
   h3 {
-    @apply text-2xl lg:text-4xl;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    h3 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
   }
 
   /* Futuristic component styles */
   .futuristic-button {
-    @apply relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 
-           transition-all duration-300 px-8 py-4 rounded-xl font-semibold tracking-wide
-           shadow-lg hover:shadow-xl hover:shadow-primary/25 transform hover:-translate-y-0.5;
+    position: relative;
+    overflow: hidden;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transition: all 0.3s ease;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
   }
 
-  .futuristic-button::before {
-    content: "";
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
-           -translate-x-full transition-transform duration-700;
-  }
-
-  .futuristic-button:hover::before {
-    @apply translate-x-full;
+  .futuristic-button:hover {
+    background-color: hsl(var(--primary) / 0.9);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
   }
 
   .futuristic-card {
-    @apply bg-card/80 backdrop-blur-xl text-card-foreground border border-border/50 
-           rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300
-           hover:border-primary/30 hover:bg-card/90;
+    background-color: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+  }
+
+  .futuristic-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    background-color: hsl(var(--card) / 0.9);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   .futuristic-input {
-    @apply bg-input/50 backdrop-blur-sm border border-border/50 rounded-xl px-4 py-3 
-           text-foreground placeholder:text-muted-foreground focus:outline-none 
-           focus:ring-2 focus:ring-primary/50 focus:border-primary/50 
-           transition-all duration-300 hover:bg-input/70;
+    background-color: hsl(var(--input) / 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: hsl(var(--foreground));
+    transition: all 0.3s ease;
+  }
+
+  .futuristic-input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .futuristic-input:focus {
+    outline: none;
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+    background-color: hsl(var(--input) / 0.7);
+  }
+
+  .futuristic-input:hover {
+    background-color: hsl(var(--input) / 0.7);
   }
 
   .glass-morphism {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   .neon-glow {
-    @apply shadow-lg shadow-primary/25;
+    box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.25);
   }
 
   .neon-text {
-    @apply text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)];
+    color: hsl(var(--primary));
+    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.5));
   }
 
   /* Animated gradient backgrounds */
@@ -176,35 +240,64 @@
 
   /* Futuristic scrollbar */
   ::-webkit-scrollbar {
-    @apply w-2;
+    width: 0.5rem;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted/30;
+    background-color: hsl(var(--muted) / 0.3);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/50 rounded-full hover:bg-primary/70;
+    background-color: hsl(var(--primary) / 0.5);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary) / 0.7);
   }
 
   /* Selection styling */
   ::selection {
-    @apply bg-primary/30 text-foreground;
+    background-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer components {
   /* Enhanced navigation styles */
   .nav-link {
-    @apply relative text-foreground/80 hover:text-primary transition-colors duration-300
-           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 
-           after:bg-primary after:transition-all after:duration-300
-           hover:after:w-full;
+    position: relative;
+    color: hsl(var(--foreground) / 0.8);
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: hsl(var(--primary));
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(var(--primary));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
   }
 
   /* Card hover effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+    transition: all 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   /* Loading animations */

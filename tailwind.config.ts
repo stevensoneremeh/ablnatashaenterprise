@@ -1,15 +1,18 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
+import defaultConfig from "tailwindcss/defaultConfig"
 
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 const config: Config = {
+  ...defaultConfig,
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
+    ...defaultConfig.theme,
     fontFamily: {
       "euclid-circular-a": ["Euclid Circular A"],
     },
@@ -49,6 +52,30 @@ const config: Config = {
         5: "#9CA3AF",
         6: "#6B7280",
         7: "#374151",
+      },
+      slate: {
+        50: "#F8FAFC",
+        100: "#F1F5F9",
+        200: "#E2E8F0",
+        300: "#CBD5E1",
+        400: "#94A3B8",
+        500: "#64748B",
+        600: "#475569",
+        700: "#334155",
+        800: "#1E293B",
+        900: "#0F172A",
+      },
+      neutral: {
+        50: "#FAFAFA",
+        100: "#F5F5F5",
+        200: "#E5E5E5",
+        300: "#D4D4D4",
+        400: "#A3A3A3",
+        500: "#737373",
+        600: "#525252",
+        700: "#404040",
+        800: "#262626",
+        900: "#171717",
       },
       blue: {
         DEFAULT: "#3C50E0",
@@ -123,6 +150,39 @@ const config: Config = {
         light: "#F7E98E",
         dark: "#B8860B",
       },
+      border: "hsl(var(--border))",
+      input: "hsl(var(--input))",
+      ring: "hsl(var(--ring))",
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
+      primary: {
+        DEFAULT: "hsl(var(--primary))",
+        foreground: "hsl(var(--primary-foreground))",
+      },
+      secondary: {
+        DEFAULT: "hsl(var(--secondary))",
+        foreground: "hsl(var(--secondary-foreground))",
+      },
+      destructive: {
+        DEFAULT: "hsl(var(--destructive))",
+        foreground: "hsl(var(--destructive-foreground))",
+      },
+      muted: {
+        DEFAULT: "hsl(var(--muted))",
+        foreground: "hsl(var(--muted-foreground))",
+      },
+      accent: {
+        DEFAULT: "hsl(var(--accent))",
+        foreground: "hsl(var(--accent-foreground))",
+      },
+      popover: {
+        DEFAULT: "hsl(var(--popover))",
+        foreground: "hsl(var(--popover-foreground))",
+      },
+      card: {
+        DEFAULT: "hsl(var(--card))",
+        foreground: "hsl(var(--card-foreground))",
+      },
     },
     screens: {
       xsm: "375px",
@@ -131,6 +191,7 @@ const config: Config = {
       ...defaultTheme.screens,
     },
     extend: {
+      ...defaultConfig.theme.extend,
       fontSize: {
         "2xs": ["10px", "17px"],
         "heading-1": ["60px", "72px"],
@@ -261,17 +322,21 @@ const config: Config = {
         1: "0px 1px 2px 0px rgba(166, 175, 195, 0.25)",
         2: "0px 6px 24px 0px rgba(235, 238, 251, 0.40), 0px 2px 4px 0px rgba(148, 163, 184, 0.05)",
         3: "0px 2px 16px 0px rgba(13, 10, 44, 0.12)",
-        testimonial:
-          "0px 0px 4px 0px rgba(148, 163, 184, 0.10), 0px 6px 12px 0px rgba(224, 227, 238, 0.45)",
+        testimonial: "0px 0px 4px 0px rgba(148, 163, 184, 0.10), 0px 6px 12px 0px rgba(224, 227, 238, 0.45)",
         breadcrumb: "0px 1px 0px 0px #E5E7EB, 0px -1px 0px 0px #E5E7EB",
-        range:
-          "0px 0px 1px 0px rgba(33, 37, 41, 0.08), 0px 2px 2px 0px rgba(33, 37, 41, 0.06)",
+        range: "0px 0px 1px 0px rgba(33, 37, 41, 0.08), 0px 2px 2px 0px rgba(33, 37, 41, 0.06)",
         filter: "0px 1px 0px 0px #E5E7EB",
         list: "1px 0px 0px 0px #E5E7EB",
         input: "inset 0 0 0 2px #3C50E0",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [...defaultConfig.plugins, require("tailwindcss-animate")],
+}
+
+export default config

@@ -13,13 +13,19 @@ const AdminDashboard = () => {
     recentInquiries: [],
   })
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchStats = async () => {
-      const supabase = createClient()
-
       try {
-        // Fetch counts
+        const supabase = createClient()
+
+        if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+          setError("Supabase environment variables not configured")
+          setLoading(false)
+          return
+        }
+
         const [
           { count: productsCount },
           { count: ordersCount },
@@ -38,7 +44,6 @@ const AdminDashboard = () => {
             .limit(5),
         ])
 
-        // Calculate total revenue
         const { data: paidOrders } = await supabase.from("orders").select("total_amount").eq("payment_status", "paid")
 
         const totalRevenue = paidOrders?.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0
@@ -53,6 +58,7 @@ const AdminDashboard = () => {
         })
       } catch (error) {
         console.error("Error fetching stats:", error)
+        setError("Failed to fetch dashboard data. Please check your database connection.")
       } finally {
         setLoading(false)
       }
@@ -69,12 +75,29 @@ const AdminDashboard = () => {
     )
   }
 
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 space-y-4">
+        <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+          <p className="text-destructive font-medium">Database Connection Error</p>
+          <p className="text-sm text-muted-foreground mt-1">{error}</p>
+        </div>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          Retry
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="luxury-card bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow duration-200">
+        <div className="futuristic-card p-6 hover-lift">
           <div className="flex items-center">
-            <div className="p-3 rounded-full bg-primary/10 text-primary">
+            <div className="p-3 rounded-full bg-primary/10 text-primary neon-glow">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -91,9 +114,9 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="luxury-card bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow duration-200">
+        <div className="futuristic-card p-6 hover-lift">
           <div className="flex items-center">
-            <div className="p-3 rounded-full bg-accent/10 text-accent">
+            <div className="p-3 rounded-full bg-accent/10 text-accent neon-glow">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -110,9 +133,9 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="luxury-card bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow duration-200">
+        <div className="futuristic-card p-6 hover-lift">
           <div className="flex items-center">
-            <div className="p-3 rounded-full bg-secondary/10 text-secondary">
+            <div className="p-3 rounded-full bg-secondary/10 text-secondary neon-glow">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -129,9 +152,9 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="luxury-card bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow duration-200">
+        <div className="futuristic-card p-6 hover-lift">
           <div className="flex items-center">
-            <div className="p-3 rounded-full bg-primary/10 text-primary">
+            <div className="p-3 rounded-full bg-primary/10 text-primary neon-glow">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -143,7 +166,7 @@ const AdminDashboard = () => {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-muted-foreground">Total Revenue</p>
-              <p className="text-2xl font-bold text-primary">₦{stats.totalRevenue.toLocaleString()}</p>
+              <p className="text-2xl font-bold neon-text">₦{stats.totalRevenue.toLocaleString()}</p>
             </div>
           </div>
         </div>
@@ -151,7 +174,7 @@ const AdminDashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Orders */}
-        <div className="luxury-card bg-card rounded-xl shadow-sm border border-border">
+        <div className="futuristic-card">
           <div className="p-6 border-b border-border">
             <h3 className="text-lg font-semibold text-foreground">Recent Orders</h3>
           </div>
@@ -161,7 +184,7 @@ const AdminDashboard = () => {
                 {stats.recentOrders.map((order: any) => (
                   <div
                     key={order.id}
-                    className="flex items-center justify-between p-4 bg-muted/50 rounded-lg border border-border/50 hover:bg-muted/70 transition-colors"
+                    className="flex items-center justify-between p-4 glass-morphism rounded-lg hover:bg-muted/70 transition-colors"
                   >
                     <div>
                       <p className="font-medium text-foreground">{order.profiles?.full_name || "Unknown Customer"}</p>
@@ -190,7 +213,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Recent Reviews */}
-        <div className="luxury-card bg-card rounded-xl shadow-sm border border-border">
+        <div className="futuristic-card">
           <div className="p-6 border-b border-border">
             <h3 className="text-lg font-semibold text-foreground">Recent Reviews</h3>
           </div>
@@ -198,7 +221,7 @@ const AdminDashboard = () => {
             {stats.recentInquiries.length > 0 ? (
               <div className="space-y-4">
                 {stats.recentInquiries.map((review: any) => (
-                  <div key={review.id} className="p-4 bg-muted/50 rounded-lg border border-border/50">
+                  <div key={review.id} className="p-4 glass-morphism rounded-lg">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
